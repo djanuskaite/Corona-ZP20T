@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CoronaZP20T.iml" filepath="$PROJECT_DIR$/.idea/modules/CoronaZP20T.iml" group="CoronaZP20T" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="CoronaZP20T/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Corona-ZP20T.iml" filepath="$PROJECT_DIR$/.idea/modules/Corona-ZP20T.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Corona-ZP20T.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Corona-ZP20T.app.iml" />
     </modules>
   </component>
 </project>

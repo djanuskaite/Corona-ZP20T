@@ -14,9 +14,17 @@ public class Validation {
     }
 
     public static boolean isValidPassword(String password){
-        Pattern pattern=Pattern.compile(PASSWORD_REGEX_PATTERN); //Sukuriamas šablonas pagal mūsų taisykles
-        Matcher matcher=pattern.matcher(password); //Pagal susikurtą šabloną palyginami susikurti duomenys
-        return matcher.find(); //Gražina true jeigu atitinka, false priešingu atveju
+        Pattern pattern=Pattern.compile(PASSWORD_REGEX_PATTERN);
+        Matcher matcher=pattern.matcher(password);
+        return matcher.find();
+    }
+
+    public static final String NUMBER_REGEX_PATTERN="^[0-9]{1,8}$";
+
+    public static boolean isValidNumber(String number){
+        Pattern pattern=Pattern.compile(NUMBER_REGEX_PATTERN);
+        Matcher matcher=pattern.matcher(number);
+        return matcher.find();
     }
 
 }

@@ -72,6 +72,7 @@
                     android:text="@string/new_entry_deaths_100" />
 
                 <RadioButton
+                    android:id="@+id/radio500"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/new_entry_deaths_500" />
@@ -100,8 +101,7 @@
             <Spinner
                 android:id="@+id/last_update_dates"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/new_entry_last_update_dates" />
+                android:layout_height="wrap_content" />
 
             <Space
                 android:layout_width="match_parent"
@@ -116,9 +116,8 @@
             <EditText
                 android:id="@+id/confirmed_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-
+                android:layout_height="wrap_content" />
+// android:inputType="number" istrinam nes lus programa
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />

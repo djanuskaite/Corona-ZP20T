@@ -1,14 +1,26 @@
 package com.corona.coronazp20t;
 
-public class Corona {
+import java.io.Serializable;
+
+// serializable kai norim is vieno lango persiusti kita ir tai yra ne bazinis tipas, objektu
+// klasems reikia sita nurodyt
+public class Corona implements Serializable {
     private String country;
     private String lastUpdate;
     private String keyId;
     private int confirmed;
     private int deaths;
 
+    //tai yra skirta darbui su json
     public Corona(String country, String lastUpdate, String keyId, int confirmed, int deaths) {
         this.country = country;
+        this.lastUpdate = lastUpdate;
+        this.keyId = keyId;
+        this.confirmed = confirmed;
+        this.deaths = deaths;
+    }
+    //skirtas atvaizdavimui duomenu is anketos new_entry_activity
+    public Corona(String lastUpdate, String keyId, int confirmed, int deaths) {
         this.lastUpdate = lastUpdate;
         this.keyId = keyId;
         this.confirmed = confirmed;
