@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //reikalinga atidaryti tuscia langa
         setContentView(R.layout.activity_login); //i tuscia langa ikrauna sukurta vaizda
-        setTitle("Login ");
+        setTitle("Login");
         //visas kodas rasomas po sito komentaro
         Button loginbatonas = findViewById(R.id.loginbatonas);//tokiu budu issitraukiam elementus
         //is vaizdo

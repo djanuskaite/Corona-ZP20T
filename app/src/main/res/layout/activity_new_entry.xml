@@ -41,13 +41,13 @@
                 android:id="@+id/country_lithuania"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/new_entry_country_lithuania" />
 
             <CheckBox
                 android:id="@+id/country_poland"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/new_entry_country_poland" />
 
             <Space
@@ -68,13 +68,13 @@
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/new_entry_deaths_100" />
 
                 <RadioButton
                     android:id="@+id/radio500"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="@string/new_entry_deaths_500" />
 
                 <RadioButton
@@ -101,7 +101,8 @@
             <Spinner
                 android:id="@+id/last_update_dates"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:entries="@array/new_entry_last_update_spinner" />
 
             <Space
                 android:layout_width="match_parent"

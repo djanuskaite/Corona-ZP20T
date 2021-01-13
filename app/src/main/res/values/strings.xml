@@ -25,12 +25,16 @@
     <string name="new_entry_deaths_1000">1000</string>
     <string name="new_entry_deaths_2000">2000</string>
     <string name="new_entry_last_update">Last update: </string>
+    <string-array name="new_entry_last_update_spinner">
+        <item>2020-12-16T05:28:04+00:00</item>
+        <item>2020-12-15T05:28:04+00:00</item>
+        <item>2020-12-14T05:28:04+00:00</item>
+        <item>2020-12-13T05:28:04+00:00</item>
+    </string-array>
     <string name = "new_entry_date1">2020-12-21T05:28:04+00:00</string>
     <string name = "new_entry_date2">2020-12-20T05:28:04+00:00</string>
     <string name = "new_entry_date3">2020-12-19T05:28:04+00:00</string>
     <string name = "new_entry_date4">2020-12-18T05:28:04+00:00</string>
-    <string name = "new_entry_date5">2020-12-17T05:28:04+00:00</string>
-    <string name = "new_entry_date6">2020-12-16T05:28:04+00:00</string>
 
     <string name="new_entry_confirmed">Confirmed: </string>
     <string name="new_entry_display_selected">Display selected</string>

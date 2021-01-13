@@ -21,60 +21,54 @@ public class NewEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_entry);
-        setTitle("New Entry ");
+        setTitle("Entry");
 
+        // Issitraukiame konkretu irasa is paspaustos korteles.
         Intent intent = getIntent();
-        Corona corona  = (Corona) intent.getSerializableExtra(Adapter.ENTRY);
-        Toast.makeText(this, "Country: " + corona.getKeyId(), Toast.LENGTH_SHORT).show();
+        Corona corona = (Corona) intent.getSerializableExtra(Adapter.ENTRY);
 
-        // pasiimsim elementus is xml
-        final CheckBox checkBoxLithuania = findViewById(R.id. country_lithuania);
-        final CheckBox checkBoxLatvia = findViewById(R.id. country_latvia);
-        final CheckBox checkBoxEstonia = findViewById(R.id. country_estonia);
-        final CheckBox checkBoxPoland = findViewById(R.id. country_poland);
+        // Pasemame is vaizdo visus elementus su kuriais dirbsime.
+        final CheckBox checkBoxLithuania = findViewById(R.id.country_lithuania);
+        final CheckBox checkBoxLatvia = findViewById(R.id.country_latvia);
+        final CheckBox checkBoxEstonia = findViewById(R.id.country_estonia);
+        final CheckBox checkBoxPoland = findViewById(R.id.country_poland);
 
-        final RadioGroup deaths = findViewById(R.id.deaths);
-        final RadioButton radio500 = findViewById(R.id.radio500);
+        final RadioGroup groupDeaths = findViewById(R.id.deaths);
+        RadioButton button2k = findViewById(R.id.radio500);
 
-        final Spinner spinner = findViewById(R.id.last_update_dates);
-        ArrayList <String> updateList = new ArrayList<String>();
+        final Spinner spinnerUpdate = findViewById(R.id.last_update_dates);
+        ArrayList<String> updateList = new ArrayList<String>();
         updateList.add(corona.getLastUpdate());
-        updateList.add(getResources().getString(R.string.new_entry_date1));
         updateList.add(getResources().getString(R.string.new_entry_date2));
         updateList.add(getResources().getString(R.string.new_entry_date3));
         updateList.add(getResources().getString(R.string.new_entry_date4));
-        updateList.add(getResources().getString(R.string.new_entry_date5));
-        updateList.add(getResources().getString(R.string.new_entry_date6));
-
-        //adapteris reikalingas sujungti isdestyma su sarasu
-        ArrayAdapter <String> dataAdapter = new ArrayAdapter<String>(
+        // Adapteris reikalingas sujungti, isdestyma su stringArray.
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_spinner_item,
                 updateList
         );
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //adapteri idedame(susiejame) i spineri
-        spinner.setAdapter(dataAdapter);
+        // Adapteri idedame i musu spinneri.
+        spinnerUpdate.setAdapter(dataAdapter);
+
 
         final EditText editTextConfirmed = findViewById(R.id.confirmed_input);
 
-        Button btnNewEntry = findViewById(R.id.display_selected_btn);
+        Button buttonDisplaySelected = findViewById(R.id.display_selected_btn);
 
-        //uzpildysime visus elementus coronos  informacija
+        // Uzpildome elementus (Coronos) informacija.
 
-        checkBoxLithuania.setText(corona.getKeyId());
-        radio500.setText(String.valueOf(corona.getDeaths())); //konvertuojame int i string, nes
-        // setText tikis kad mes jam duosim stringa, todel reikia papildomai konvertuoti
+        checkBoxPoland.setText(corona.getKeyId());
+        button2k.setText(String.valueOf(corona.getDeaths()));
         editTextConfirmed.setText(String.valueOf(corona.getConfirmed()));
 
-        //ant mygt paspaudimo rodysime vartotojo iversta informacija
-
-        btnNewEntry.setOnClickListener(new View.OnClickListener() {
+        // Ant mygtuko paspaudimo parodyti visa vartotojo ivesta informacija.
+        buttonDisplaySelected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String countries = "";
-                if(checkBoxLithuania.isChecked()) {
-                    // countries = countries + kazkas
+                if (checkBoxLithuania.isChecked()) {
                     countries += checkBoxLithuania.getText().toString() + ", ";
                 }
                 if (checkBoxLatvia.isChecked()) {
@@ -87,40 +81,36 @@ public class NewEntryActivity extends AppCompatActivity {
                     countries += checkBoxPoland.getText().toString() + ", ";
                 }
 
-                //gauname pasirinkta radio buttona is radio group'o
-                int selectedRadioGroupId = deaths.getCheckedRadioButtonId();
-
-                //surandam radio button pg grazinta id
-                RadioButton selectedButton = (RadioButton) findViewById(selectedRadioGroupId);
+                // get selected radio button from radioGroup
+                int selectedId = groupDeaths.getCheckedRadioButtonId();
+                // find the radiobutton by returned id
+                RadioButton selectedButton = (RadioButton) findViewById(selectedId);
                 int deaths = Integer.parseInt(selectedButton.getText().toString());
 
-                String updateDate = String.valueOf(spinner.getSelectedItem());
+                String updateDate = String.valueOf(spinnerUpdate.getSelectedItem());
 
                 String confirmed = editTextConfirmed.getText().toString();
 
-                //issivalom klaidu pranesima
                 editTextConfirmed.setError(null);
-                if (Validation.isValidNumber(confirmed)) {
-                  // public Corona(String lastUpdate, String keyId, int confirmed, int deaths) {
-                    Corona corona = new Corona(updateDate, countries, Integer.parseInt(confirmed), deaths);
-                    //atvaizduojama vartotojui objekto informacija
+                if (Validation.isValidNumber(confirmed)){
+                    // Sukuriamas korona objektas is GUI elementu.
+                    // public Corona(String lastUpdate, String keyId, int confirmed, int deaths)
+                    Corona corona = new Corona(updateDate,countries, Integer.parseInt(confirmed), deaths);
+
+                    // Atvaizduojamas vartotojui objekto informacija.
                     Toast.makeText(
                             NewEntryActivity.this,
-                            "Country(ies): " + corona.getKeyId() + "\n" +
-                            "Last Update: " + corona.getLastUpdate() + "\n" +
-                            "Confirmed: " + corona.getConfirmed() + "\n" +
-                            "Deaths: " + corona.getDeaths(),
+                            "Country(-ies): " + corona.getKeyId() + "\n " +
+                                    "Last update: " + corona.getLastUpdate() + "\n " +
+                                    "Confirmed: " + corona.getConfirmed() + "\n " +
+                                    "Deaths: " + corona.getDeaths(),
                             Toast.LENGTH_SHORT
                     ).show();
-                // blogai ivesti confirmed duomenys
-                } else {
+                } else { // blogai įvesti confirmed duomenys
                     editTextConfirmed.setError(getResources().getString(R.string.new_entry_invalid_confirmed));
-                    editTextConfirmed.requestFocus(); // kad klaida 'blykciotu'
+                    editTextConfirmed.requestFocus();
                 }
-
             }
         });
-
-
     }
 }
